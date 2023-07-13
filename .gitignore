@@ -37,3 +37,10 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Custom
+yarn.lock
+package-lock.json
+.env
+/apps/**/.env
+/libs/**/source.xlf
