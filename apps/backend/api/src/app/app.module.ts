@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { configurationFactory, mongooseFactory } from './config/config';
+import { NewsModule } from './news/news.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { configurationFactory, mongooseFactory } from './config/config';
       useFactory: mongooseFactory,
       inject: [ConfigService],
     }),
+    NewsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
