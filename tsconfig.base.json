@@ -15,6 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@trnx/core/config/service": ["libs/core/config/service/src/index.ts"],
+      "@trnx/core/environments/service": [
+        "libs/core/environments/service/src/index.ts"
+      ],
       "@trnx/news/common": ["libs/news/common/src/index.ts"]
     }
   },

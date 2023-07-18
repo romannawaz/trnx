@@ -1,0 +1,21 @@
+import { Inject, Injectable, Optional } from '@angular/core';
+import { ENVIRONMENTS, Environments } from './environment.interface';
+
+const ENVIRONMENTS_DEFAULT: Environments = {
+  production: false,
+};
+
+@Injectable({
+  providedIn: 'root',
+})
+export class EnvironmentsService {
+  constructor(
+    @Optional()
+    @Inject(ENVIRONMENTS)
+    private readonly environments: Environments
+  ) {}
+
+  getEnvironments(): Environments {
+    return this.environments ?? ENVIRONMENTS_DEFAULT;
+  }
+}
