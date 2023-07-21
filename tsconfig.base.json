@@ -15,6 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@trnx/client/ui/container": ["libs/client/ui/container/src/index.ts"],
+      "@trnx/client/ui/layout": ["libs/client/ui/layout/src/index.ts"],
       "@trnx/core/config/service": ["libs/core/config/service/src/index.ts"],
       "@trnx/core/environments/service": [
         "libs/core/environments/service/src/index.ts"

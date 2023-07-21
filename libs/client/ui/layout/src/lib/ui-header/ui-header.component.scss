@@ -1,0 +1,39 @@
+@use '@angular/material' as mat;
+
+@import 'libs/ui/styles/stylesheets/utils';
+
+:host {
+  display: block;
+  padding: 0.3rem 0;
+  background-color: mat.get-color-from-palette($color-primary, 800);
+  color: $white;
+  box-shadow: 0 4px 56px rgb(0 0 0 / 12%);
+  flex-shrink: 0;
+}
+
+header.header {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 0.8rem;
+
+  .logo {
+    cursor: pointer;
+
+    height: 100%;
+    width: 100px;
+
+    > svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    gap: 7px;
+  }
+}
