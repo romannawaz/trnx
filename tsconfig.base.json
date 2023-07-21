@@ -23,6 +23,9 @@
       "@trnx/core/api/interceptors/content-type": [
         "libs/core/api/interceptors/content-type/src/index.ts"
       ],
+      "@trnx/core/api/interceptors/with-credentials": [
+        "libs/core/api/interceptors/with-credentials/src/index.ts"
+      ],
       "@trnx/core/api/service": ["libs/core/api/service/src/index.ts"],
       "@trnx/core/config/service": ["libs/core/config/service/src/index.ts"],
       "@trnx/core/environments/service": [
