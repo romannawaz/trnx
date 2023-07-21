@@ -18,7 +18,7 @@ export function getMongooseConfig(): MongooseModuleFactoryOptions {
 
 export function getCorsConfig(): CorsOptions {
   return {
-    origin: process.env.CORS_ORIGIN ?? ['localhost:4200', 'localhost:4000'],
+    origin: process.env.CORS_ORIGIN ?? ['http://localhost:4200', 'http://localhost:4000'],
     credentials: process.env.CORS_CREDENTIALS
       ? process.env?.CORS_CREDENTIALS === 'true'
       : true,
