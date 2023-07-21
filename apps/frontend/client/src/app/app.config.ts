@@ -7,6 +7,7 @@ import {
 import { appRoutes } from './app.routes';
 
 import { ContentTypeInterceptor } from '@trnx/core/api/interceptors/content-type';
+import { WithCretendialsInterceptor } from '@trnx/core/api/interceptors/with-credentials';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +15,11 @@ export const appConfig: ApplicationConfig = {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ContentTypeInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: WithCretendialsInterceptor,
       multi: true,
     },
   ],
