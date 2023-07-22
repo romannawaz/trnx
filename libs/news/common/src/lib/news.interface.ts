@@ -6,3 +6,10 @@ export interface INews {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface CreateNews {
+  title: string;
+  description: string;
+}
+
+export type UpdateNews = Partial<INews>;
