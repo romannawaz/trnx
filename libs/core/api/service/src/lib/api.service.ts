@@ -71,7 +71,7 @@ export class ApiService {
   ): Observable<T> {
     return this.httpClient
       .get<T>(this.makeUrl(url), getApiRequestOptions(options))
-      .pipe(catchError((error) => throwError(() => new Error(error))));
+      .pipe(catchError((error) => throwError(() => error)));
   }
 
   post<T = void>(
@@ -81,7 +81,7 @@ export class ApiService {
   ): Observable<T> {
     return this.httpClient
       .post<T>(this.makeUrl(url), body ?? null, getApiRequestOptions(options))
-      .pipe(catchError((error) => throwError(() => new Error(error))));
+      .pipe(catchError((error) => throwError(() => error)));
   }
 
   patch<T = void>(
@@ -91,7 +91,7 @@ export class ApiService {
   ): Observable<T> {
     return this.httpClient
       .patch<T>(this.makeUrl(url), body, getApiRequestOptions(options))
-      .pipe(catchError((error) => throwError(() => new Error(error))));
+      .pipe(catchError((error) => throwError(() => error)));
   }
 
   put<T = void>(
@@ -101,7 +101,7 @@ export class ApiService {
   ): Observable<T> {
     return this.httpClient
       .put<T>(this.makeUrl(url), body, getApiRequestOptions(options))
-      .pipe(catchError((error) => throwError(() => new Error(error))));
+      .pipe(catchError((error) => throwError(() => error)));
   }
 
   delete<T = void>(
@@ -110,6 +110,6 @@ export class ApiService {
   ): Observable<T> {
     return this.httpClient
       .delete<T>(this.makeUrl(url), getApiRequestOptions(options))
-      .pipe(catchError((error) => throwError(() => new Error(error))));
+      .pipe(catchError((error) => throwError(() => error)));
   }
 }
