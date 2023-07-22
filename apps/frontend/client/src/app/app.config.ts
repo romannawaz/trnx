@@ -1,5 +1,5 @@
 import { ApplicationConfig } from '@angular/core';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 import {
   provideRouter,
   withEnabledBlockingInitialNavigation,
@@ -12,6 +12,7 @@ import { WithCretendialsInterceptor } from '@trnx/core/api/interceptors/with-cre
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
+    provideHttpClient(),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ContentTypeInterceptor,
