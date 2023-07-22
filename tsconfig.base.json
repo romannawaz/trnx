@@ -31,6 +31,8 @@
       "@trnx/core/environments/service": [
         "libs/core/environments/service/src/index.ts"
       ],
+      "@trnx/core/store/root": ["libs/core/store/root/src/index.ts"],
+      "@trnx/core/store/utils": ["libs/core/store/utils/src/index.ts"],
       "@trnx/news/api/service": ["libs/news/api/service/src/index.ts"],
       "@trnx/news/common": ["libs/news/common/src/index.ts"],
       "@trnx/ui/styles": ["libs/ui/styles/src/index.ts"]
