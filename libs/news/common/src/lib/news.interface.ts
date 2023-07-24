@@ -22,6 +22,9 @@ export interface NewsEntity {
   newsChangeError: Record<string, any> | null;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface News extends NewsEntity {}
+
 export interface CreateNews {
   title: string;
   description: string;
