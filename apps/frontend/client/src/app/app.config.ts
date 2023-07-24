@@ -1,10 +1,15 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  isDevMode,
+} from '@angular/core';
 import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 import {
   provideRouter,
   withEnabledBlockingInitialNavigation,
 } from '@angular/router';
 import { appRoutes } from './app.routes';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { ContentTypeInterceptor } from '@trnx/core/api/interceptors/content-type';
 import { WithCretendialsInterceptor } from '@trnx/core/api/interceptors/with-credentials';
@@ -25,5 +30,12 @@ export const appConfig: ApplicationConfig = {
       multi: true,
     },
     importProvidersFrom(RootStoreModule),
+    provideStoreDevtools({
+      maxAge: 25,
+      logOnly: !isDevMode(),
+      autoPause: true,
+      trace: false,
+      traceLimit: 75,
+    }),
   ],
 };
