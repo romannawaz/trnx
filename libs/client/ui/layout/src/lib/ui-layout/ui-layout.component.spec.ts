@@ -1,16 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ClientUiLayoutComponent } from './ui-layout.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { UiLayoutComponent } from './ui-layout.component';
 
-describe('ClientUiLayoutComponent', () => {
-  let component: ClientUiLayoutComponent;
-  let fixture: ComponentFixture<ClientUiLayoutComponent>;
+describe('UiLayoutComponent', () => {
+  let component: UiLayoutComponent;
+  let fixture: ComponentFixture<UiLayoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ClientUiLayoutComponent],
+      imports: [UiLayoutComponent, RouterTestingModule],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ClientUiLayoutComponent);
+    fixture = TestBed.createComponent(UiLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
