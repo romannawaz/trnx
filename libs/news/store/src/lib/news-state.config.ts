@@ -1,4 +1,8 @@
-import { NgModule } from '@angular/core';
+import {
+  EnvironmentProviders,
+  Provider,
+  importProvidersFrom,
+} from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -9,11 +13,11 @@ import { NEWS_FEATURE_KEY, NewsReducer } from './news.reducer';
 import { NewsEffects } from './news.effects';
 import { NewsFacade } from './news.facade';
 
-@NgModule({
-  imports: [
+export const NewsStateConfig: Array<Provider | EnvironmentProviders> = [
+  NewsService,
+  NewsFacade,
+  importProvidersFrom([
     StoreModule.forFeature(NEWS_FEATURE_KEY, NewsReducer),
     EffectsModule.forFeature([NewsEffects]),
-  ],
-  providers: [NewsService, NewsFacade],
-})
-export class NewsStateModule {}
+  ]),
+];
