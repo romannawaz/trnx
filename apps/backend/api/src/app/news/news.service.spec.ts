@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { getModelToken } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
-import { newsStub } from '@trnx/news/common';
+import { NEWS_DTO_STUB } from '@trnx/news/common';
 import { News } from './schemas/news.schema';
 import { NewsService } from './news.service';
 import { UpdateNewsDto } from './dto/update-news.dto';
@@ -40,8 +40,8 @@ describe('NewsService', () => {
 
   describe('findOne', () => {
     it('should return a news item by id', async () => {
-      const id = 'news_id';
-      const expectedNews: News = newsStub;
+      const id = NEWS_DTO_STUB._id;
+      const expectedNews: News = NEWS_DTO_STUB;
       jest.spyOn(newsModel, 'findById').mockResolvedValue(expectedNews);
 
       const result = await service.findOne(id);
@@ -53,7 +53,7 @@ describe('NewsService', () => {
 
   describe('findAll', () => {
     it('should return a news array', async () => {
-      const expectedNews = [newsStub];
+      const expectedNews = [NEWS_DTO_STUB];
 
       jest.spyOn(newsModel, 'find').mockReturnValue({
         exec: jest.fn().mockResolvedValue(expectedNews),
@@ -68,12 +68,12 @@ describe('NewsService', () => {
 
   describe('update', () => {
     it('should update a news item', async () => {
-      const id = 'news_id';
+      const id = NEWS_DTO_STUB._id;
       const updateNewsDto: UpdateNewsDto = {
         _id: id,
         title: 'newTitle',
       };
-      const expectedNews: News = newsStub;
+      const expectedNews: News = NEWS_DTO_STUB;
       jest
         .spyOn(newsModel, 'findByIdAndUpdate')
         .mockResolvedValue(expectedNews);
@@ -90,8 +90,8 @@ describe('NewsService', () => {
 
   describe('remove', () => {
     it('should remove a news item by ID', async () => {
-      const id = 'news_id';
-      const expectedNews: News = newsStub;
+      const id = NEWS_DTO_STUB._id;
+      const expectedNews: News = NEWS_DTO_STUB;
       jest
         .spyOn(newsModel, 'findByIdAndRemove')
         .mockResolvedValue(expectedNews);

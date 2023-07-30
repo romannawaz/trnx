@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { NotFoundException } from '@nestjs/common';
-import { INews, newsStub } from '@trnx/news/common';
+import { INews, NEWS_ARRAY_STUB, NEWS_DTO_STUB } from '@trnx/news/common';
 
 import { NewsController } from './news.controller';
 import { NewsService } from './news.service';
@@ -39,24 +39,26 @@ describe('NewsController', () => {
   });
 
   it('[GET /] should return news array', async () => {
-    jest.spyOn(newsService, 'findAll').mockResolvedValue([newsStub]);
+    jest.spyOn(newsService, 'findAll').mockResolvedValue(NEWS_ARRAY_STUB);
 
-    expect(await controller.getAll()).toEqual([newsStub]);
+    expect(await controller.getAll()).toEqual(NEWS_ARRAY_STUB);
   });
 
   describe('[GET /:id] Get one', () => {
     it('should return a news item with the specified id', async () => {
-      const result: INews = newsStub;
+      const result: INews = NEWS_DTO_STUB;
 
       jest.spyOn(newsService, 'findOne').mockResolvedValue(result);
 
-      expect(await controller.getOne({ id: newsStub._id })).toEqual(result);
+      expect(await controller.getOne({ id: NEWS_DTO_STUB._id })).toEqual(
+        result
+      );
     });
 
     it('should throw NotFoundException when news item is not found', () => {
       jest.spyOn(newsService, 'findOne').mockResolvedValue(null);
 
-      expect(controller.getOne({ id: newsStub._id })).rejects.toThrow(
+      expect(controller.getOne({ id: NEWS_DTO_STUB._id })).rejects.toThrow(
         NotFoundException
       );
     });
@@ -64,22 +66,24 @@ describe('NewsController', () => {
 
   describe('[POST /create]', () => {
     it('should return new news', async () => {
-      const { title, description }: CreateNewsDto = newsStub;
+      const { title, description }: CreateNewsDto = NEWS_DTO_STUB;
 
-      jest.spyOn(newsService, 'create').mockResolvedValue(newsStub);
+      jest.spyOn(newsService, 'create').mockResolvedValue(NEWS_DTO_STUB);
 
-      expect(await controller.create({ title, description })).toEqual(newsStub);
+      expect(await controller.create({ title, description })).toEqual(
+        NEWS_DTO_STUB
+      );
     });
   });
 
   describe('[PATCH /update/:id]', () => {
     it('should return updated news', async () => {
-      const updatedStub = Object.assign(newsStub, { title: 'newTitle' });
+      const updatedStub = Object.assign(NEWS_DTO_STUB, { title: 'newTitle' });
 
       jest.spyOn(newsService, 'update').mockResolvedValue(updatedStub);
 
       expect(
-        await controller.update({ _id: newsStub._id, title: 'newTitle' })
+        await controller.update({ _id: NEWS_DTO_STUB._id, title: 'newTitle' })
       ).toEqual(updatedStub);
     });
 
@@ -87,26 +91,31 @@ describe('NewsController', () => {
       jest.spyOn(newsService, 'update').mockResolvedValue(null);
 
       expect(
-        controller.update({ _id: newsStub._id, description: 'description' })
+        controller.update({
+          _id: NEWS_DTO_STUB._id,
+          description: 'description',
+        })
       ).rejects.toThrow(NotFoundException);
     });
   });
 
   describe('[PATCH /update/:id]', () => {
     it('should return updated news with increased views', async () => {
-      const result = Object.assign(newsStub, {
-        views: newsStub.views + 1,
+      const result = Object.assign(NEWS_DTO_STUB, {
+        views: NEWS_DTO_STUB.views + 1,
       });
 
       jest.spyOn(newsService, 'increaseViews').mockResolvedValue(result);
 
-      expect(await controller.viewed({ id: newsStub._id })).toEqual(result);
+      expect(await controller.viewed({ id: NEWS_DTO_STUB._id })).toEqual(
+        result
+      );
     });
 
     it('should throw NotFoundException when news item is not found', () => {
       jest.spyOn(newsService, 'increaseViews').mockResolvedValue(null);
 
-      expect(controller.viewed({ id: newsStub._id })).rejects.toThrow(
+      expect(controller.viewed({ id: NEWS_DTO_STUB._id })).rejects.toThrow(
         NotFoundException
       );
     });
@@ -114,17 +123,19 @@ describe('NewsController', () => {
 
   describe('[DELETE /remove/:id]', () => {
     it('should return removed news', async () => {
-      const result = newsStub;
+      const result = NEWS_DTO_STUB;
 
       jest.spyOn(newsService, 'remove').mockResolvedValue(result);
 
-      expect(await controller.remove({ id: newsStub._id })).toEqual(result);
+      expect(await controller.remove({ id: NEWS_DTO_STUB._id })).toEqual(
+        result
+      );
     });
 
     it('should throw NotFoundException when news item is not found', () => {
       jest.spyOn(newsService, 'remove').mockResolvedValue(null);
 
-      expect(controller.remove({ id: newsStub._id })).rejects.toThrow(
+      expect(controller.remove({ id: NEWS_DTO_STUB._id })).rejects.toThrow(
         NotFoundException
       );
     });
