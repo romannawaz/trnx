@@ -43,11 +43,8 @@ export class NewsController {
   }
 
   @Patch('update/:id')
-  async update(
-    @Param() { id }: FindOneParams,
-    @Body() updateNewsDto: Partial<UpdateNewsDto>
-  ): Promise<News> {
-    const news = await this.newsService.update(id, updateNewsDto);
+  async update(@Body() updateNewsDto: Partial<UpdateNewsDto>): Promise<News> {
+    const news = await this.newsService.update(updateNewsDto);
     if (!news) throw new NotFoundException();
 
     return news;

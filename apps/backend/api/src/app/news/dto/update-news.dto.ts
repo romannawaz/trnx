@@ -1,11 +1,16 @@
 import { IsNotEmpty, IsString } from 'class-validator';
+import { UpdateNews } from '@trnx/news/common';
 
-export class UpdateNewsDto {
+export class UpdateNewsDto implements UpdateNews {
   @IsString()
   @IsNotEmpty()
-  title!: string;
+  _id: string;
 
   @IsString()
   @IsNotEmpty()
-  description!: string;
+  title?: string;
+
+  @IsString()
+  @IsNotEmpty()
+  description?: string;
 }

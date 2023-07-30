@@ -69,7 +69,8 @@ describe('NewsService', () => {
   describe('update', () => {
     it('should update a news item', async () => {
       const id = 'news_id';
-      const updateNewsDto: Partial<UpdateNewsDto> = {
+      const updateNewsDto: UpdateNewsDto = {
+        _id: id,
         title: 'newTitle',
       };
       const expectedNews: News = newsStub;
@@ -77,7 +78,7 @@ describe('NewsService', () => {
         .spyOn(newsModel, 'findByIdAndUpdate')
         .mockResolvedValue(expectedNews);
 
-      const result = await service.update(id, updateNewsDto);
+      const result = await service.update(updateNewsDto);
 
       expect(result).toBe(expectedNews);
       expect(newsModel.findByIdAndUpdate).toHaveBeenCalledWith(

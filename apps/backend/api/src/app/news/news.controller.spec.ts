@@ -79,7 +79,7 @@ describe('NewsController', () => {
       jest.spyOn(newsService, 'update').mockResolvedValue(updatedStub);
 
       expect(
-        await controller.update({ id: newsStub._id }, { title: 'newTitle' })
+        await controller.update({ _id: newsStub._id, title: 'newTitle' })
       ).toEqual(updatedStub);
     });
 
@@ -87,7 +87,7 @@ describe('NewsController', () => {
       jest.spyOn(newsService, 'update').mockResolvedValue(null);
 
       expect(
-        controller.update({ id: newsStub._id }, { description: 'description' })
+        controller.update({ _id: newsStub._id, description: 'description' })
       ).rejects.toThrow(NotFoundException);
     });
   });

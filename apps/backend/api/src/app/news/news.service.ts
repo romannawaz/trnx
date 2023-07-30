@@ -27,11 +27,8 @@ export class NewsService {
     return newNews.save();
   }
 
-  async update(
-    id: string,
-    updatedNewsDto: Partial<UpdateNewsDto>
-  ): Promise<News> {
-    return this.newsModel.findByIdAndUpdate(id, updatedNewsDto);
+  async update(updatedNewsDto: Partial<UpdateNewsDto>): Promise<News> {
+    return this.newsModel.findByIdAndUpdate(updatedNewsDto._id, updatedNewsDto);
   }
 
   async increaseViews(id: string): Promise<News> {
