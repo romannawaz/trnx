@@ -1,14 +1,14 @@
 import { createState, createEntityState } from '@trnx/core/store/utils';
 
 import { NewsEntity } from '@trnx/news/common';
-import { NewsReducer, NewsState, newsInitialState } from './news.reducer';
 import {
   ENTITY_STUB,
   NEWS_ARRAY_STUB,
   NEWS_ERROR_STUB,
   NEWS_STUB,
   UPDATE_NEWS_STUB,
-} from './news.stub';
+} from '@trnx/news/common';
+import { NewsReducer, NewsState, newsInitialState } from './news.reducer';
 import { NewsActions } from './news.actions';
 
 describe('[NewsReducer]', () => {

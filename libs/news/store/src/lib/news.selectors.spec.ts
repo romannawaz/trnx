@@ -1,9 +1,9 @@
 import { createEntityState, createStore } from '@trnx/core/store/utils';
 
 import { News } from '@trnx/news/common';
+import { NEWS_ARRAY_STUB, NEWS_ERROR_STUB, NEWS_STUB } from '@trnx/news/common';
 import { NEWS_FEATURE_KEY, NewsState, newsInitialState } from './news.reducer';
 import * as NewsSelectors from './news.selectors';
-import { NEWS_ARRAY_STUB, NEWS_ERROR_STUB, NEWS_STUB } from './news.stub';
 
 describe('[NewsSelectors]', () => {
   const getState = (payload: Partial<NewsState>): NewsState =>

@@ -6,9 +6,6 @@ import { Observable } from 'rxjs';
 import { cold, hot } from 'jasmine-marbles';
 
 import { NewsService } from '@trnx/news/api/service';
-import { NewsEffects } from './news.effects';
-import { NEWS_FEATURE_KEY, newsInitialState } from './news.reducer';
-import { NewsActions } from './news.actions';
 import {
   ENTITY_STUB,
   NEWS_ARRAY_STUB,
@@ -16,7 +13,10 @@ import {
   NEWS_STUB,
   NEW_NEWS_STUB,
   UPDATE_NEWS_STUB,
-} from './news.stub';
+} from '@trnx/news/common';
+import { NewsEffects } from './news.effects';
+import { NEWS_FEATURE_KEY, newsInitialState } from './news.reducer';
+import { NewsActions } from './news.actions';
 
 describe('[NewsEffects]', () => {
   let actions$: Observable<Actions>;

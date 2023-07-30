@@ -5,10 +5,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { firstValueFrom, of } from 'rxjs';
 
 import { NewsService } from '@trnx/news/api/service';
+import { NEWS_ARRAY_STUB, NEWS_STUB } from '@trnx/news/common';
 import { NewsEffects } from './news.effects';
 import { NewsFacade } from './news.facade';
 import { NEWS_FEATURE_KEY, NewsReducer } from './news.reducer';
-import { NEWS_ARRAY_STUB, NEWS_STUB } from './news.stub';
 
 describe('[NewsFacade]', () => {
   let facade: NewsFacade;
